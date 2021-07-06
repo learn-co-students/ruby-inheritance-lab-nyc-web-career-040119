@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+require 'pry'
 require_relative "../lib/user.rb"
 require_relative "../lib/teacher.rb"
 require_relative "../lib/student.rb"
@@ -8,13 +8,27 @@ steve = Student.new
 steve.first_name = "Steve"
 steve.last_name = "Jobs"
 
+stove = Student.new
+stove.first_name = "Stove"
+stove.last_name = "Jebs"
+
 avi = Teacher.new
 avi.first_name = "Avi"
 avi.last_name = "Flombaum"
 
+jim = User.new
+jim.first_name = "Jim"
+jim.last_name = "Jam"
 
-some_knowledge = avi.teach 
+some_knowledge = avi.teach
+just_learned = "just learned this important knowledge:"
 
-steve.learn(some_knowledge)
+Student.all.each { |student| puts "#{student.first_name} #{just_learned} '#{student.learn(some_knowledge).join()}' from Avi." }
 
-puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+Student.all.map { |student| puts student.knowledge }
+# puts "Steve just learned this important knowledge: '#{steve.knowledge.sample}' from Avi"
+# puts "Stove just learned this important knowledge: '#{stove.knowledge.sample}' from Avi"
+
+
+# steve.learn(some_knowledge)
+# puts "Steve just learned this important knowledge: '#{steve.knowledge.sample}' from Avi"
